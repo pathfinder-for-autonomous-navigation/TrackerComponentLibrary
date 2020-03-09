@@ -587,7 +587,7 @@ function [dataRet,rawText]=processEOPData(source)
 %               2) Get the finals.data file from the US Naval Observatory.
 %                  This has EOP parameters since 1992 and predictions for
 %                  the next year.
-%               3) Get the finals.data file from the IERS data center.
+%               3) Get the finals.all file from the IERS data center.
 %
 %OUTPUTS: dataRet A matrix where each row is a set of EOP. It has the
 %                 format:
@@ -651,7 +651,7 @@ else
         case 2
             rawText=webread('http://maia.usno.navy.mil/ser7/finals.data',options);
         case 3
-            rawText=webread('https://datacenter.iers.org/eop/-/somos/5Rgv/latest/10',options);
+            rawText=webread('https://datacenter.iers.org/data/latestVersion/9_FINALS.ALL_IAU2000_V2013_019.txt');%,options);
         otherwise
             error('Invalid data source given')
     end
